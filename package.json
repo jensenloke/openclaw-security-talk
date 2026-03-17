@@ -8,7 +8,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
   },
   "dependencies": {
     "@slidev/cli": "^52.14.1",
