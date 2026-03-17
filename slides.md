@@ -23,10 +23,8 @@ mdc: true
 </div>
 
 ---
-
 layout: two-cols
 layoutClass: gap-12
-
 ---
 
 # The Wake-Up Call
@@ -97,12 +95,12 @@ graph LR
 | **Technical**          | How do we stop encoded attacks, SSRF, injection? |
 
 ---
-
-## layout: section
+layout: section
+---
 
 # Pillar 1
 
-## Information & Data Security
+### Information & Data Security
 
 _What data leaks, who sees what, and how we control it_
 
@@ -135,10 +133,8 @@ Configured per-group in <code>group-tiers.json</code> — not hardcoded.
 </div>
 
 ---
-
 layout: two-cols
 layoutClass: gap-8
-
 ---
 
 # Output Safety
@@ -185,22 +181,20 @@ Defense-in-depth matters because bugs recur.
 </div>
 
 ---
-
-## layout: section
+layout: section
+---
 
 # Pillar 2
 
-## Workflow Security
+### Workflow Security
 
 _Prompt injection defenses and identity-based access control_
 
 <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/pixel-lobster.svg" class="w-12 mt-8 mx-auto opacity-30" />
 
 ---
-
 layout: two-cols
 layoutClass: gap-8
-
 ---
 
 # Identity & Access Control
@@ -279,10 +273,8 @@ resolveChannelGroupToolsPolicy({
 ```
 
 ---
-
 layout: two-cols
 layoutClass: gap-8
-
 ---
 
 # Prompt Injection Defense
@@ -336,22 +328,20 @@ Emails, webhooks, web fetches get security boundaries:
 </div>
 
 ---
-
-## layout: section
+layout: section
+---
 
 # Pillar 3
 
-## Technical Security
+### Technical Security
 
 _Encoded content filters, command obfuscation, infrastructure hardening_
 
 <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/pixel-lobster.svg" class="w-12 mt-8 mx-auto opacity-30" />
 
 ---
-
 layout: two-cols
 layoutClass: gap-8
-
 ---
 
 # The L1B3RT4S Attack
@@ -415,10 +405,8 @@ graph LR
 Filtered content **never reaches** the LLM or session log. 19 unit tests. UUIDs and git hashes pass through.
 
 ---
-
 layout: two-cols
 layoutClass: gap-8
-
 ---
 
 # Command Obfuscation
