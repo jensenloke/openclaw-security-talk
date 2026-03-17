@@ -606,10 +606,8 @@ Binary, hex, base64, Unicode math — if an LLM can decode it, an attacker will 
 </div>
 
 ---
-
 layout: center
 class: text-center
-
 ---
 
 <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/pixel-lobster.svg" class="w-20 mb-6 mx-auto" />
