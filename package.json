@@ -13,6 +13,7 @@
     "export": "slidev export"
   },
   "dependencies": {
+    "@oxc-parser/binding-darwin-arm64": "^0.115.0",
     "@slidev/cli": "^52.14.1",
     "@slidev/theme-default": "^0.25.0"
   }

@@ -70,12 +70,55 @@ Thursday afternoon."
 </div>
 
 ---
+layout: two-cols
+layoutClass: gap-12
+---
+
+# Why 1-to-Many Changes Everything
+
+_Direct messages are safe. Multi-party conversations require defense in depth._
+
+::left::
+
+```mermaid {scale: 0.65}
+graph LR
+    subgraph DM["1-1 DM (Safe)"]
+        A1["👤 User"] --> B1["🤖 Bot"]
+        B1 --> A1
+    end
+    style DM fill:#d1fae5,stroke:#166534,color:#166534
+```
+
+**Low Risk**
+
+Basic auth, normal content filtering
+
+::right::
+
+```mermaid {scale: 0.65}
+graph LR
+    subgraph Group["1-1-Many (Careful!)"]
+        direction LR
+        A2["👤"] --> G["👥 Group"]
+        A3["👤"] --> G
+        A4["👤"] --> G
+        G <--> B2["🤖 Bot"]
+    end
+    style Group fill:#fee2e2,stroke:#991b1b,color:#991b1b
+    style G fill:#fecaca,stroke:#991b1b,color:#991b1b
+```
+
+**High Risk**
+
+Content policy, tool access controls, data classification
+
+::::
+
+---
 
 # Three Pillars of Defense
 
-<br>
-
-```mermaid {scale: 0.85}
+```mermaid {scale: 0.7}
 graph LR
     A["Information &<br/>Data Security"] --> D["Defense<br/>in Depth"]
     B["Workflow<br/>Security"] --> D
@@ -86,12 +129,10 @@ graph LR
     style D fill:#845ef7,stroke:#333,color:#fff
 ```
 
-<br>
-
-| Pillar                 | Question It Answers                              |
-| ---------------------- | ------------------------------------------------ |
-| **Information & Data** | What data leaks? Who sees what?                  |
-| **Workflow**           | Who can instruct the AI? What can it do?         |
+| Pillar                 | Question It Answers                            |
+| ---------------------- | ---------------------------------------------- |
+| **Information & Data** | What data leaks? Who sees what?               |
+| **Workflow**           | Who can instruct the AI? What can it do?       |
 | **Technical**          | How do we stop encoded attacks, SSRF, injection? |
 
 ---
@@ -244,14 +285,14 @@ Every group must be <strong>explicitly approved</strong> before the AI will resp
 
 Before any tool fires: _Who is this? What group? What tier?_
 
-```mermaid {scale: 0.75}
+```mermaid {scale: 0.65}
 graph LR
-    A[Incoming<br/>Message] --> B{Known<br/>Group?}
+    A[Incoming Message] --> B{Known Group?}
     B -->|No| C[Silent Ignore]
-    B -->|Yes| D{Sender<br/>Lookup}
-    D --> E{Tool Policy<br/>for Sender}
+    B -->|Yes| D{Sender Lookup}
+    D --> E{Tool Policy for Sender}
     E -->|Blocked| F[Chat Only]
-    E -->|Allowed| G[Execute with<br/>Scoped Access]
+    E -->|Allowed| G[Execute with Scoped Access]
     style C fill:#ff6b6b,color:#fff
     style F fill:#ffd43b,color:#333
     style G fill:#51cf66,color:#fff
@@ -259,17 +300,7 @@ graph LR
 
 ```typescript
 // group-policy.ts — hierarchical lookup: group -> default -> sender -> wildcard
-// Sender matched by: ID, E164 phone, username, or display name
-resolveChannelGroupToolsPolicy({
-  cfg,
-  channel,
-  groupId,
-  accountId,
-  senderId,
-  senderName,
-  senderUsername,
-  senderE164,
-});
+resolveChannelGroupToolsPolicy({ cfg, channel, groupId, accountId, senderId, senderName, senderUsername, senderE164 });
 ```
 
 ---
